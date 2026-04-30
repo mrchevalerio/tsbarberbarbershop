@@ -247,9 +247,9 @@
       position: relative;
       z-index: 1;
       width: min(calc(100vw - 24px), 1680px);
-      min-height: clamp(300px, 54svh, 640px);
-      aspect-ratio: 21 / 9;
-      max-height: 66svh;
+      min-height: clamp(260px, 42svh, 460px);
+      aspect-ratio: 16 / 10;
+      max-height: 52svh;
       align-self: center;
       margin: 0 auto 30px;
       opacity: 1;
@@ -258,7 +258,9 @@
       overflow: hidden;
       border-radius: 22px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.03);
+      background:
+        radial-gradient(circle at 50% 45%, rgba(200, 16, 46, 0.22), transparent 46%),
+        rgba(255, 255, 255, 0.03);
       box-shadow:
         0 40px 90px rgba(0, 0, 0, 0.62),
         inset 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -293,7 +295,8 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center bottom;
       opacity: 0;
       filter:
         drop-shadow(0 34px 54px rgba(0, 0, 0, 0.76))
@@ -1031,6 +1034,7 @@
       .hero-visual {
         width: min(calc(100vw - 32px), 1760px);
         min-height: clamp(420px, 60svh, 720px);
+        aspect-ratio: 16 / 8;
         max-height: 68svh;
         margin-bottom: 30px;
       }
@@ -1078,9 +1082,15 @@
       .hero-visual {
         width: min(calc(100vw - 44px), 1880px);
         min-height: clamp(520px, 66svh, 790px);
+        aspect-ratio: 21 / 9;
         max-height: 72svh;
         margin-top: 10px;
         margin-bottom: 34px;
+      }
+
+      .hero-product {
+        object-fit: cover;
+        object-position: center;
       }
 
       .hero-glow {
