@@ -308,7 +308,7 @@
       z-index: 1;
       opacity: 1;
       object-position: center;
-      transform: scale(1.012);
+      transform: scale(1.16);
       animation: collageDrift 14s ease-in-out infinite alternate;
     }
 
@@ -1021,8 +1021,8 @@
     }
 
     @keyframes collageDrift {
-      from { transform: scale(1.012) translate3d(0, 0, 0); filter: brightness(0.94) saturate(1.05); }
-      to { transform: scale(1.055) translate3d(-1.8%, -1%, 0); filter: brightness(1) saturate(1.12); }
+      from { transform: scale(1.16) translate3d(0, 0, 0); filter: brightness(0.94) saturate(1.05); }
+      to { transform: scale(1.2) translate3d(-1.2%, -0.8%, 0); filter: brightness(1) saturate(1.12); }
     }
 
     @keyframes glowPulse {
@@ -1091,6 +1091,15 @@
       .hero-product {
         object-fit: cover;
         object-position: center;
+      }
+
+      .hero-product.is-cut {
+        transform: scale(1.012);
+      }
+
+      @keyframes collageDrift {
+        from { transform: scale(1.012) translate3d(0, 0, 0); filter: brightness(0.94) saturate(1.05); }
+        to { transform: scale(1.055) translate3d(-1.8%, -1%, 0); filter: brightness(1) saturate(1.12); }
       }
 
       .hero-glow {
