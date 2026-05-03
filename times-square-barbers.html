@@ -626,7 +626,9 @@ const translations = {
     gallery: "GALLERY",
     barbers: "BARBERS",
     hours: "HOURS",
-    location: "LOCATION"
+    location: "LOCATION",
+    footerBuilt: "Website built by",
+    footerTagline: "Modern digital experiences for local businesses."
   },
   es: {
     heroEyebrow: "BARBERÍA PREMIUM",
@@ -639,7 +641,9 @@ const translations = {
     gallery: "GALERÍA",
     barbers: "BARBEROS",
     hours: "HORARIO",
-    location: "UBICACIÓN"
+    location: "UBICACIÓN",
+footerBuilt: "Sitio web creado por",
+    footerTagline: "Experiencias digitales modernas para negocios locales."
   }
 };
 
@@ -668,12 +672,12 @@ setLanguage(localStorage.getItem("siteLanguage") || "en");
 <footer class="site-footer">
   <div class="footer-inner">
     <p class="footer-built">
-      Website built by 
+      <span data-i18n="footerBuilt">Website built by</span>
       <a href="https://waitaroundllc.com" target="_blank" rel="noopener">
         waitAround LLC
       </a>
     </p>
-    <p class="footer-tagline">
+    <p class="footer-tagline" data-i18n="footerTagline">
       Modern digital experiences for local businesses.
     </p>
   </div>
