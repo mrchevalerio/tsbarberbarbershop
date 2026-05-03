@@ -613,6 +613,20 @@ document.querySelector('.hamburger').addEventListener('click',function(){
   s[2].style.transform=open?'':'rotate(-45deg) translate(5px,-5px)';
 });
 </script>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-built">
+      <span data-i18n="footerBuilt">Website built by</span>
+      <a href="https://waitaroundllc.com" target="_blank" rel="noopener">
+        waitAround LLC
+      </a>
+    </p>
+    <p class="footer-tagline" data-i18n="footerTagline">
+      Modern digital experiences for local businesses.
+    </p>
+  </div>
+</footer>
+
 <script>
 const translations = {
   en: {
@@ -669,18 +683,5 @@ document.getElementById("langToggle").addEventListener("click", () => {
 setLanguage(localStorage.getItem("siteLanguage") || "en");
 </script>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-built">
-      <span data-i18n="footerBuilt">Website built by</span>
-      <a href="https://waitaroundllc.com" target="_blank" rel="noopener">
-        waitAround LLC
-      </a>
-    </p>
-    <p class="footer-tagline" data-i18n="footerTagline">
-      Modern digital experiences for local businesses.
-    </p>
-  </div>
-</footer>
 </body>
 </html>
