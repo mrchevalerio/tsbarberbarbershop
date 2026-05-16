@@ -682,6 +682,116 @@ document.getElementById("langToggle").addEventListener("click", () => {
 
 setLanguage(localStorage.getItem("siteLanguage") || "en");
 </script>
+<script>
+const textTranslations = {
+  "PRECISION. CRAFT. CONFIDENCE.": "PRECISIÓN. ARTE. CONFIANZA.",
+  "Precision Cuts.": "Cortes precisos.",
+  "Timeless Style.": "Estilo eterno.",
+  "Elevated barbering for the modern man.": "Barbería premium para el hombre moderno.",
+  "Premium service. Local pride.": "Servicio premium. Orgullo local.",
+  "Book Appointment": "Reservar cita",
+  "View Services": "Ver servicios",
+  "Skilled Barbers": "Barberos expertos",
+  "Experts in every cut": "Expertos en cada corte",
+  "Premium Service": "Servicio premium",
+  "Quality you can feel": "Calidad que se siente",
+  "Local & Trusted": "Local y confiable",
+  "Proudly in your community": "Orgullosamente en tu comunidad",
+  "OUR SERVICES": "NUESTROS SERVICIOS",
+  "Cut Above the Rest": "Un corte por encima del resto",
+  "View All Services": "Ver todos los servicios",
+  "Classic Haircut": "Corte clásico",
+  "Clean, tailored cuts with attention to detail.": "Cortes limpios y personalizados con atención al detalle.",
+  "Beard Grooming": "Arreglo de barba",
+  "Shape, trim, and lineup for a sharp look.": "Forma, recorte y línea para un look definido.",
+  "Hot Towel Shave": "Afeitado con toalla caliente",
+  "Traditional shave with hot towel experience.": "Afeitado tradicional con experiencia de toalla caliente.",
+  "Deluxe Experience": "Experiencia deluxe",
+  "Haircut, shave, and premium finishing.": "Corte, afeitado y acabado premium.",
+  "OUR WORK": "NUESTRO TRABAJO",
+  "Fresh Cuts. Every Time.": "Cortes frescos. Siempre.",
+  "MEET OUR BARBERS": "CONOCE A NUESTROS BARBEROS",
+  "The Craftsmen": "Los artesanos",
+  "Master Barber": "Barbero maestro",
+  "Senior Barber": "Barbero senior",
+  "Best cut I've had in years. Consistent, professional, and always on point.": "El mejor corte que me he hecho en años. Consistente, profesional y siempre impecable.",
+  "HOURS & LOCATION": "HORARIO Y UBICACIÓN",
+  "FIND US": "ENCUÉNTRANOS",
+  "Hours & Location": "Horario y ubicación",
+  "WORKING HOURS": "HORARIO",
+  "Monday": "Lunes",
+  "Tuesday": "Martes",
+  "Wednesday": "Miércoles",
+  "Thursday": "Jueves",
+  "Friday": "Viernes",
+  "Saturday": "Sábado",
+  "Sunday": "Domingo",
+  "Closed": "Cerrado",
+  "ADDRESS": "DIRECCIÓN",
+  "PHONE": "TELÉFONO",
+  "EMAIL": "CORREO",
+  "Get Directions": "Cómo llegar",
+  "Book Your Appointment Today": "Reserva tu cita hoy",
+  "Website built by": "Sitio web creado por",
+  "Modern digital experiences for local businesses.": "Experiencias digitales modernas para negocios locales."
+};
 
+const reverseTranslations = Object.fromEntries(
+  Object.entries(textTranslations).map(([en, es]) => [es, en])
+);
+
+let currentLang = localStorage.getItem("siteLanguage") || "en";
+
+function translateTextNode(node, lang) {
+  const original = node.nodeValue;
+  const trimmed = original.trim();
+
+  if (!trimmed) return;
+
+  const leading = original.match(/^\s*/)[0];
+  const trailing = original.match(/\s*$/)[0];
+
+  if (lang === "es" && textTranslations[trimmed]) {
+    node.nodeValue = leading + textTranslations[trimmed] + trailing;
+  }
+
+  if (lang === "en" && reverseTranslations[trimmed]) {
+    node.nodeValue = leading + reverseTranslations[trimmed] + trailing;
+  }
+}
+
+function walkAndTranslate(lang) {
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode(node) {
+        const parent = node.parentElement;
+        if (!parent) return NodeFilter.FILTER_REJECT;
+        if (["SCRIPT", "STYLE"].includes(parent.tagName)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    }
+  );
+
+  let node;
+  while ((node = walker.nextNode())) {
+    translateTextNode(node, lang);
+  }
+
+  document.documentElement.lang = lang;
+  document.getElementById("langToggle").textContent = lang === "en" ? "ES" : "EN";
+  localStorage.setItem("siteLanguage", lang);
+}
+
+document.getElementById("langToggle").addEventListener("click", () => {
+  currentLang = currentLang === "en" ? "es" : "en";
+  walkAndTranslate(currentLang);
+});
+
+walkAndTranslate(currentLang);
+</script>
 </body>
 </html>
