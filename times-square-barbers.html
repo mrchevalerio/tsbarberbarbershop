@@ -628,61 +628,6 @@ document.querySelector('.hamburger').addEventListener('click',function(){
 </footer>
 
 <script>
-const translations = {
-  en: {
-    heroEyebrow: "PREMIUM BARBERSHOP",
-    heroTitle: "Sharp Cuts. Fresh Style.",
-    heroDesc: "Experience precision grooming in the heart of Times Square.",
-    bookNow: "BOOK NOW",
-    viewServices: "VIEW SERVICES",
-    services: "SERVICES",
-    servicesTitle: "Cuts made with precision",
-    gallery: "GALLERY",
-    barbers: "BARBERS",
-    hours: "HOURS",
-    location: "LOCATION",
-    footerBuilt: "Website built by",
-    footerTagline: "Modern digital experiences for local businesses."
-  },
-  es: {
-    heroEyebrow: "BARBERÍA PREMIUM",
-    heroTitle: "Cortes limpios. Estilo fresco.",
-    heroDesc: "Vive una experiencia de barbería precisa en el corazón de Times Square.",
-    bookNow: "RESERVAR",
-    viewServices: "VER SERVICIOS",
-    services: "SERVICIOS",
-    servicesTitle: "Cortes hechos con precisión",
-    gallery: "GALERÍA",
-    barbers: "BARBEROS",
-    hours: "HORARIO",
-    location: "UBICACIÓN",
-footerBuilt: "Sitio web creado por",
-    footerTagline: "Experiencias digitales modernas para negocios locales."
-  }
-};
-
-let currentLang = "en";
-
-function setLanguage(lang) {
-  currentLang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-
-  document.getElementById("langToggle").textContent = lang === "en" ? "ES" : "EN";
-  localStorage.setItem("siteLanguage", lang);
-}
-
-document.getElementById("langToggle").addEventListener("click", () => {
-  setLanguage(currentLang === "en" ? "es" : "en");
-});
-
-setLanguage(localStorage.getItem("siteLanguage") || "en");
-</script>
-<script>
 const textTranslations = {
   "PRECISION. CRAFT. CONFIDENCE.": "PRECISIÓN. ARTE. CONFIANZA.",
   "Precision Cuts.": "Cortes precisos.",
